@@ -3,6 +3,11 @@ import Botao from "../Botao"
 import style from "./Formulario.module.scss"
 
 function Formulario (){
+
+    state = { 
+        nome: "" ,
+        horario: "00:00"
+    }
     return(
         <form className={style.novoPonto}>
             <div className={style.inputContainer}>
@@ -25,6 +30,7 @@ function Formulario (){
                 type="time"
                 step="1"
                 name="horario"
+                value={this.state.horario}
                 id="horario"
                 min="00:00:00"
                 max="23:59:59"

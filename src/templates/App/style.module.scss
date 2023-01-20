@@ -3,7 +3,7 @@
     grid-template-rows: min-content min-content auto;
     grid-template-areas: 
     "novo-ponto"
-    "cronometro"
+    "contagem"
     "pontos"
     ;
     row-gap: 24px;
@@ -18,7 +18,7 @@
     @media screen and (min-width:1280px)  {
       grid-template-areas: 
       "novo-ponto pontos"
-      "cronometro pontos"
+      "contagem pontos"
       ;
       column-gap: 64px;
       grid-template-rows: min-content min-content;
