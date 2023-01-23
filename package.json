@@ -1,5 +1,5 @@
 {
-  "name": "aplicacao-typescript",
+  "name": "nova-aplicacao",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "typescript": "^4.9.4",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.0",
     "sass": "^1.57.1",
     "typescript-plugin-css-modules": "^4.1.1"
   }

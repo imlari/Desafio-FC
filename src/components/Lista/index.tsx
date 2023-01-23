@@ -1,26 +1,20 @@
-import React, { useState } from "react"
+import { IPontos } from "../../types/ponto"
 import Item from "./Item"
 import style from './Lista.module.scss'
 
-function Lista() {
+interface Props {
+    pontos: IPontos[],
+    selecionaPonto: (pontoSelecionado: IPontos) => void
+}
 
-    const [pontos, setPontos] = useState ([{
-        nome: "Larissa",
-        horario: "07:55:23",
-    },
-    {
-        nome: "Letícia",
-        horario: "07:57:43"
-    }]) 
+function Lista({pontos, selecionaPonto} : Props) {
 
     return (
         <aside className={style.listaPontos}>
-            <h2 onClick={() => { 
-                console.log("verificando comportamento", pontos) 
-                setPontos([...pontos, {nome:"Patrícia", horario:"08:00:00"}])}}>Registro de Pontos</h2>
+            <h2>Registro de Descanso</h2>
             <ul>
                 {pontos.map((ponto, index) => (
-                    <Item {...ponto} key={index} />
+                    <Item {...ponto} key={ponto.id} selecionaPonto={selecionaPonto}/>
                 ))}
             </ul>
         </aside>
