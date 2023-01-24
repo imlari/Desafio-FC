@@ -8,11 +8,13 @@ class Formulario extends React.Component<{
     setPontos: React.Dispatch<React.SetStateAction<IPontos[]>>
 }>
 {
+    // Determinando o estado inicial dos inputs
     state = {
         nome: "",
         horario: "00:00"
     }
 
+    // Função que guarda os registros que estão sendo criados com os anteriores, fazendo com que não sumam
     adicionarRegistro(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
         this.props.setPontos(registrosAntigos => [
@@ -30,6 +32,8 @@ class Formulario extends React.Component<{
     }
 
     render() {
+
+        // retorna os inputs que estão relacionadaos a adicionar registros ao submeter o registro
         return (
             <form className={style.novoPonto} onSubmit={this.adicionarRegistro.bind(this)}>
                 <div className={style.inputContainer}>
@@ -48,7 +52,7 @@ class Formulario extends React.Component<{
                 </div>
                 <div className={style.inputContainer}>
                     <label htmlFor="horario">
-                        Informe o tempo de Descanso
+                        Informe o tempo de descanso
                     </label>
                     <input
                         type="time"
