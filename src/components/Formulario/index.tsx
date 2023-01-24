@@ -1,41 +1,37 @@
-import React from "react"
+import React, { useState } from "react"
 import { IPontos } from "../../types/ponto"
 import Botao from "../Botao"
 import style from "./Formulario.module.scss"
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
 
-class Formulario extends React.Component<{
+interface Props {
     setPontos: React.Dispatch<React.SetStateAction<IPontos[]>>
-}>
-{
-    // Determinando o estado inicial dos inputs
-    state = {
-        nome: "",
-        horario: "00:00"
-    }
+}
 
-    // Função que guarda os registros que estão sendo criados com os anteriores, fazendo com que não sumam
-    adicionarRegistro(evento: React.FormEvent<HTMLFormElement>) {
-        evento.preventDefault();
-        this.props.setPontos(registrosAntigos => [
+// Criando função do formulário
+function Formulario ({setPontos} : Props) {
+        const[nome, setNome] = useState("")
+        const[horario, setHorario] = useState("00:00") 
+        
+// Criando função que adiciona os registros
+        function adicionarRegistro(evento: React.FormEvent<HTMLFormElement>) {
+            evento.preventDefault();
+        setPontos(registrosAntigos => [
             ...registrosAntigos,
             {
-                ...this.state,
+                nome,
+                horario,    
                 selecionado: false,
                 registrado: false,
                 id:uuidv4()
             }])
-        this.setState({
-            nome: "",
-            horario: "00:00"
-        })
+
+            setNome("")
+            setHorario("00:00")
     }
-
-    render() {
-
-        // retorna os inputs que estão relacionadaos a adicionar registros ao submeter o registro
-        return (
-            <form className={style.novoPonto} onSubmit={this.adicionarRegistro.bind(this)}>
+    // retorna os inputs que estão relacionadaos a adicionar registros ao submeter o registro
+    return (
+        <form className={style.novoPonto} onSubmit={adicionarRegistro}>
                 <div className={style.inputContainer}>
                     <label htmlFor="nome">
                         Informe o seu nome
@@ -43,8 +39,8 @@ class Formulario extends React.Component<{
                     <input
                         type="text"
                         name="nome"
-                        value={this.state.nome}
-                        onChange={evento => this.setState({ ...this.state, nome: evento.target.value })}
+                        value={nome}
+                        onChange={(evento) => setNome(evento.target.value)}
                         id="nome"
                         placeholder="digite seu nome"
                         required
@@ -58,18 +54,17 @@ class Formulario extends React.Component<{
                         type="time"
                         step="1"
                         name="horario"
-                        value={this.state.horario}
-                        onChange={evento => this.setState({ ...this.state, horario: evento.target.value })}
+                        value={horario}
+                        onChange={(evento) => setHorario(evento.target.value)}
                         id="horario"
-                        min="00:00:00"
-                        max="23:59:59"
+                        min="00:00"
+                        max="23:59"
                         required
                     />
                 </div>
                 <Botao type="submit"> Adicionar </Botao>
             </form>
-        )
-    }
+    )
 }
 
 export default Formulario

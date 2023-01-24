@@ -23,16 +23,17 @@
   }
   
   .itemSelecionado {
-    background-color: #32CD32;
+    background-color: #e7e8eb;
     box-shadow: 2px 4px 4px #0000009F inset;
-    color: #f2f2f2;
+    color: #32CD32;
   }
   
   .itemRegistrado {
-    background-color: #566F42;
+    background-color: #00b233;
+    color: #f2f2f2;
     cursor: auto;
   
-    .concluido {
+    .registrado {
       display: block;
       background-image: url('../../../assets/img/check-mark.svg');
       background-repeat: no-repeat;

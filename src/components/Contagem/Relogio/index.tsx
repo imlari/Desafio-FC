@@ -3,6 +3,7 @@ import style from './Relogio.module.scss'
 interface Props {
     horario: number | undefined
 }
+
 export default function Relogio({horario = 0} : Props){
 
     // Determinando horas e minutos, lembrando que o horário está em minutos

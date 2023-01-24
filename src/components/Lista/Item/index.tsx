@@ -9,8 +9,8 @@ interface Props extends IPontos {
 // Passando como parâmetro para os itens o nome e horário, sendo também determinado se está selecionado, registrado e o seu id ao ser clicado
 export default function Item({nome, horario, selecionado, registrado, id, selecionaPonto}: Props) {
     return (
-        <li className={`${style.item} ${selecionado ? style.itemSelecionado : ''}`} 
-            onClick={() => selecionaPonto ({
+        <li className={`${style.item} ${selecionado ? style.itemSelecionado : ''} ${registrado ? style.itemRegistrado : ''}`} 
+            onClick={() => !registrado && selecionaPonto ({
             nome,
             horario,
             selecionado,
@@ -20,6 +20,7 @@ export default function Item({nome, horario, selecionado, registrado, id, seleci
         >
             <h3>{nome}</h3>
             <span>{horario}</span>
+            {registrado && <span className={style.registrado} aria-label="item completado"></span>}
         </li>
     )
 }
