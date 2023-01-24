@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Formulario from '../../components/Formulario';
 import Lista from '../../components/Lista';
-import style from './style.module.scss'
 import Contagem from '../../components/Contagem';
 import { IPontos } from '../../types/ponto';
+import { AppStyle } from './style';
 
 // Função onde se encontra o formulário, lista e contagem
 function App() {
@@ -39,11 +39,11 @@ function App() {
   }
 
   return (
-    <div className={style.AppStyle}>
+    <AppStyle>
       <Formulario setPontos={setPontos} />
       <Lista pontos={pontos} selecionaPonto={selecionaPonto} />
       <Contagem selecionado={selecionado} registraPonto={registraPonto} />
-    </div>
+    </AppStyle>
   );
 }
 

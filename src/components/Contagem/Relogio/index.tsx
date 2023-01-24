@@ -1,4 +1,4 @@
-import style from './Relogio.module.scss'
+import { RelogioDivisao, RelogioNumero } from './style'
 
 interface Props {
     horario: number | undefined
@@ -17,11 +17,11 @@ export default function Relogio({horario = 0} : Props){
     // Retornando o relógio
     return (
         <>
-            <span className={style.relogioNumero}>{horaDezena}</span>
-            <span className={style.relogioNumero}>{horaUnidade}</span>
-            <span className={style.relogioDivisao}>:</span>
-            <span className={style.relogioNumero}>{minutoDezena}</span>
-            <span className={style.relogioNumero}>{minutoUnidade}</span>
+            <RelogioNumero>{horaDezena}</RelogioNumero>
+            <RelogioNumero>{horaUnidade}</RelogioNumero>
+            <RelogioDivisao>:</RelogioDivisao>
+            <RelogioNumero>{minutoDezena}</RelogioNumero>
+            <RelogioNumero>{minutoUnidade}</RelogioNumero>
         </>
     )
 }

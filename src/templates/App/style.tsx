@@ -1,4 +1,6 @@
-.AppStyle {
+import styled from "styled-components"
+
+export const AppStyle = styled.div`
     display: grid;
     grid-template-rows: min-content min-content auto;
     grid-template-areas: 
@@ -27,4 +29,4 @@
       align-content: center;
       padding: 64px;
     }
-  }
+`

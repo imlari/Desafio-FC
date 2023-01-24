@@ -1,5 +1,6 @@
 import { IPontos } from '../../../types/ponto'
 import style from  './Item.module.scss'
+import { Registrado } from './style'
 
 //Definindo as propriedades que existirão no item
 interface Props extends IPontos {
@@ -20,7 +21,7 @@ export default function Item({nome, horario, selecionado, registrado, id, seleci
         >
             <h3>{nome}</h3>
             <span>{horario}</span>
-            {registrado && <span className={style.registrado} aria-label="item completado"></span>}
+            {registrado && <Registrado aria-label="item completado"></Registrado>}
         </li>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Botao.module.scss'
+import { Button } from './style'
 
 // Determinando o tipo das propriedades que serão utilizadas na função
 interface Props {
@@ -11,9 +11,12 @@ interface Props {
 // Criando o botão e passando parâmetros
 function Botao({onClick, type, children} : Props) {
     return (
-        <button onClick={onClick} type={type} className={style.botao}>
+        /*<button onClick={onClick} type={type} className={style.botao}>
             {children}
-        </button>
+        </button>*/
+        <Button onClick={onClick} type={type}>
+        {children}
+        </Button>
     )
 }
 
