@@ -1,9 +1,8 @@
 import { tempoParaMinutos } from '../../common/utils/time'
 import { IPontos } from '../../types/ponto'
-import Botao from '../Botao'
 import Relogio from './Relogio'
 import { useState, useEffect } from "react"
-import { Count, Timer, Title} from './style'
+import { Button, Count, Timer, Title} from './style'
 
 // Determina as propriedades de quem vai fazer interação com a função de contagem
 interface Props {
@@ -38,7 +37,7 @@ export default function Contagem({ selecionado, registraPonto }: Props) {
             <Timer>
                 <Relogio horario={horario} />
             </Timer>
-            <Botao onClick={() => temporizador(horario)}>Iniciar</Botao>
+            <Button onClick={() => temporizador(horario)}>Iniciar</Button>
         </Count>
     )
 }

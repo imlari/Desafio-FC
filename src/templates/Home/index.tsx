@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Formulario from '../../components/Formulario';
 import Lista from '../../components/Lista';
 import Contagem from '../../components/Contagem';
@@ -9,7 +9,8 @@ import { AppStyle } from './style';
 function App() {
   const [pontos, setPontos] = useState<IPontos[]>([])
   const [selecionado, setSelecionado] = useState<IPontos>()
-  // Criando a função que seleciona os pontos e relaciona com o ponto que foi selecionado
+
+  // Função que seleciona o ponto
   function selecionaPonto(pontoSelecionado: IPontos) {
     setSelecionado(pontoSelecionado)
     setPontos(pontosAnteriores => pontosAnteriores.map(ponto => ({

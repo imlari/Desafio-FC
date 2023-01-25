@@ -3,6 +3,7 @@ import { IPontos } from "../../types/ponto"
 import Botao from "../Botao"
 import { v4 as uuidv4 } from 'uuid';
 import { InputContainer, NovoPonto } from "./style";
+import axios from 'axios'
 
 interface Props {
     setPontos: React.Dispatch<React.SetStateAction<IPontos[]>>
@@ -10,11 +11,31 @@ interface Props {
 
 // Criando função do formulário
 function Formulario({ setPontos }: Props) {
-    const [nome, setNome] = useState("")
-    const [horario, setHorario] = useState("00:00")
+    const [nome, setNome] = useState('')
+    const [horario, setHorario] = useState('')
 
+    function postUsuario (evento: React.FormEvent<HTMLFormElement>) {
+        evento.preventDefault()
+        axios.post('https://63d1757ed5f0fa7fbdcbd27f.mockapi.io/users', {
+            nome,
+            horario
+        })
+        setPontos(registrosAntigos => [
+            ...registrosAntigos,
+            {
+                nome,
+                horario,
+                selecionado: false,
+                registrado: false,
+                id: uuidv4()
+            }])
+        console.log(nome)
+        console.log(horario)
+    }
+
+    
     // Criando função que adiciona os registros
-    function adicionarRegistro(evento: React.FormEvent<HTMLFormElement>) {
+    /*function adicionarRegistro(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
         setPontos(registrosAntigos => [
             ...registrosAntigos,
@@ -28,10 +49,10 @@ function Formulario({ setPontos }: Props) {
 
         setNome("")
         setHorario("00:00")
-    }
+    }*/
     // retorna os inputs que estão relacionadaos a adicionar registros ao submeter o registro
     return (
-        <NovoPonto onSubmit={adicionarRegistro}>
+        <NovoPonto onSubmit={postUsuario}>
             <InputContainer>
                 <label htmlFor="nome"> Informe o seu nome </label>
                 <input
@@ -60,6 +81,7 @@ function Formulario({ setPontos }: Props) {
             </InputContainer>
             <Botao type="submit"> Adicionar </Botao>
         </NovoPonto>
+        
     )
 }
 
