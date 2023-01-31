@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Button = styled.button`
     align-self: center;
@@ -23,4 +23,4 @@ export const Button = styled.button`
           width: 150px;
           font-size: 1.25rem;
         }
-`
+`;

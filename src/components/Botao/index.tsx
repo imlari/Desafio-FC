@@ -11,7 +11,6 @@ interface Props {
 // Criando o botão e passando parâmetros
 function Botao({ onClick, type, children }: Props) {
   return (
-    
     <Button onClick={onClick} type={type}>
       {children}
     </Button>
